@@ -1,0 +1,23 @@
+{
+  "name": "quickbasket",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "i": "^0.3.7",
+    "mongoose": "^8.6.2",
+    "nodemon": "^3.1.4",
+    "npm": "^10.8.3",
+    "tslib": "^2.7.0"
+  }
+}
