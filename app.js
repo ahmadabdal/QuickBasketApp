@@ -2,12 +2,18 @@ import 'dotenv/config'
 
 import {connectDB} from './src/config/connect.js'
 import Fastify from 'fastify';
+import { admin,buildAdminRouter } from './src/config/setup.js';
+import { PORT } from './src/config/config.js';
+import { registerRouts } from './src/routes/index.js';
 
 const start= async()=> {
 
     await connectDB(process.env.MONGO_URI)
     const app=Fastify();
-    const PORT= process.env.PORT || 3000;
+
+    await registerRouts(app);
+
+    await buildAdminRouter(app);
     app.listen({port:PORT, host:"0.0.0.0"},
         (err,add)=>  {
             if(err){
@@ -15,7 +21,7 @@ const start= async()=> {
                 
             }
             else {
-                console.log(`Quickbasket started on http://localhost:${PORT}`);
+                console.log(`Quickbasket started on http://localhost:${PORT}${admin.options.rootPath}`);
                 
             }
         }
